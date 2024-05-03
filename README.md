@@ -1,4 +1,3 @@
-#RestaurantProject
 
 #Onboarding to Project:
 Model definitions can be found in ReservationApp/models.py
@@ -25,17 +24,17 @@ Our API functionality is found in ReservationApp/views.py
     -takes DELETE request, along with query param of reservation_id, and deletes Reservation. If Reservation ID is valid, deletes reservations, returns valid response. Otherwise, error messages are returned for non-valid API usage.
 
 #How do I run this?
-- 0) Run tests: 
+- Step 0) Run tests: 
 `python manage.py test ReservationApp.tests`
 This command will run all tests located within the ReservationApp.tests package, including testViews.py and testModels.py. (for views/models respectively). "OK" will be printed if all pass (as they should), with errors showing failed tests. Run tests after making any changes.
 
-- 1) Run the server: In terminal, inside root of project /RestaurantProject, run:
+- Step 1) Run the server: In terminal, inside root of project /RestaurantProject, run:
 `python manage.py runserver`
 - Now you will see something like this below:
 `Starting development server at http://127.0.0.1:8000/`
 - The (http://127.0.0.1:8000/) is the address of your local server
 
-- 2) Create objects to use for API testing. Inside another terminal tab run
+- Step 2) Create objects to use for API testing. Inside another terminal tab run
 `python manage.py shell`
 - This will open up a python shell. This is an executable python environment. We will use this to create our objects. Example of object creation to get you started below:
 ```python
@@ -77,19 +76,19 @@ reservation1 = Reservation.objects.create(table=table1, time=timezone.now())
 
 print("Reservation ID:", reservation1.id)
 ```
-- 3) You can now run find_restaurant_availability API like below. Change the http://127.0.0.1:8000/ server to whatever the local server was shown as in step 1 above. You should see some output like below (table_id might be different).
+- Step 3) You can now run find_restaurant_availability API like below. Change the http://127.0.0.1:8000/ server to whatever the local server was shown as in step 1 above. You should see some output like below (table_id might be different).
      
 `curl -X GET "http://127.0.0.1:8000/find-restaurant-availability/?group_size=2&time=2024-05-01T19:30:00&dietary_restrictions=Vegan"`
 
 `[{"restaurant_name": "Restaurant A", "table_id": 39}]% `
 
-- 4) Now, to test create_reservation API. Use same query as below, except change table_id to whatever table_id you had returned from find_restaurant_availability (mine was table_id= 39). You should see some successful return response like below.
-  5) 
+- Step 4) Now, to test create_reservation API. Use same query as below, except change table_id to whatever table_id you had returned from find_restaurant_availability (mine was table_id= 39). You should see some successful return response like below.
+  
 `curl -X POST "http://127.0.0.1:8000/create-reservation/" -d "diners=John&diners=Emma&time=2024-05-01T19:30:00&table_id=39"`
 
 `{"message": "Reservation created successfully", "reservation": "Reservation ID: 20 for John, Emma at Restaurant A - Table 39"}%`
 
-- 5) Now, to use delete_reservation API.Follow below command, should see response like bwelow. Pass in Reservation ID that is seen from output of step 4, create_reservation API.
+- Step 5) Now, to use delete_reservation API.Follow below command, should see response like bwelow. Pass in Reservation ID that is seen from output of step 4, create_reservation API.
      
 `curl -X DELETE "http://127.0.0.1:8000/delete-reservation/20/"`        
 
