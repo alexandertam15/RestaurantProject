@@ -78,13 +78,21 @@ reservation1 = Reservation.objects.create(table=table1, time=timezone.now())
 print("Reservation ID:", reservation1.id)
 ```
 - 3) You can now run find_restaurant_availability API like below. Change the http://127.0.0.1:8000/ server to whatever the local server was shown as in step 1 above. You should see some output like below (table_id might be different).
+     
 `curl -X GET "http://127.0.0.1:8000/find-restaurant-availability/?group_size=2&time=2024-05-01T19:30:00&dietary_restrictions=Vegan"`
+
 `[{"restaurant_name": "Restaurant A", "table_id": 39}]% `
+
 - 4) Now, to test create_reservation API. Use same query as below, except change table_id to whatever table_id you had returned from find_restaurant_availability (mine was table_id= 39). You should see some successful return response like below.
+  5) 
 `curl -X POST "http://127.0.0.1:8000/create-reservation/" -d "diners=John&diners=Emma&time=2024-05-01T19:30:00&table_id=39"`
+
 `{"message": "Reservation created successfully", "reservation": "Reservation ID: 20 for John, Emma at Restaurant A - Table 39"}%`
+
 - 5) Now, to use delete_reservation API.Follow below command, should see response like bwelow. Pass in Reservation ID that is seen from output of step 4, create_reservation API.
-`curl -X DELETE "http://127.0.0.1:8000/delete-reservation/20/"`                                                              
+     
+`curl -X DELETE "http://127.0.0.1:8000/delete-reservation/20/"`        
+
 `{"message": "Reservation 20 deleted successfully"}%`
 
 
