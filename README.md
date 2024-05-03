@@ -3,11 +3,17 @@
 #Onboarding to Project:
 Model definitions can be found in ReservationApp/models.py
 In our Restaurant Model, we have: 
+
 -DietaryRestriction (Diner's dietary restriction)
+
 -Endorsement (Restaurant's supported dietary restrictions)
+
 -Diner (Individual eating at restaurant)
+
 -Restaurant (Restaurants)
+
 -Table (Table at a Restaurant)
+
 -Reservation (Table reserved, diners eating, Res time)
 
 Our API functionality is found in ReservationApp/views.py
@@ -27,7 +33,7 @@ This command will run all tests located within the ReservationApp.tests package,
 `python manage.py runserver`
 - Now you will see something like this below:
 `Starting development server at http://127.0.0.1:8000/`
-- The [http://](http://127.0.0.1:8000/) is the address of your local server
+- The (http://127.0.0.1:8000/) is the address of your local server
 
 - 2) Create objects to use for API testing. Inside another terminal tab run
 `python manage.py shell`
